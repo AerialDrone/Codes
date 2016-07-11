@@ -1,0 +1,8 @@
+import numpy as np
+import cv2
+img = cv2.imread('c:/car.jpg',0)
+cv2.imshow('imagetest',img)
+edges1 = cv2.Canny(img,100,200)
+cv2.imshow('Canny edge real',edges1)
+cv2.waitKey()
+cv2.destroyAllWindows()

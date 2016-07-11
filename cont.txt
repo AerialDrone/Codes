@@ -1,0 +1,22 @@
+import numpy as np
+import cv2
+
+im = cv2.imread('c:/black.jpg')
+cv2.imshow('original image',im)
+cv2.waitKey()
+
+imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
+cv2.imshow('gray image',imgray)
+cv2.waitKey()
+
+ret,thresh = cv2.threshold(imgray,60,255,0)
+cv2.imshow('thresh image',thresh)
+cv2.waitKey()
+
+image, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+cv2.imshow('cont image',image)
+cv2.waitKey()
+
+im = cv2.drawContours(im, contours, -1, (0,255,255), 3)
+cv2.imshow('fina image',im)
+cv2.waitKey()

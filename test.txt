@@ -1,0 +1,31 @@
+import numpy as np
+import cv2
+
+imgr = cv2.imread('c:/star.jpg',-1)
+cv2.imshow('original image',imgr)
+cv2.waitKey()
+
+imgg = cv2.imread('c:/star.jpg',0)
+cv2.imshow('gray image',imgg)
+cv2.waitKey()
+
+blur = cv2.blur(imgg,(5,5))
+cv2.imshow('blur gray image',blur)
+cv2.waitKey()
+
+gblur = cv2.GaussianBlur(imgg,(5,5),0)
+cv2.imshow('gaussian blur gray image',gblur)
+cv2.waitKey()
+
+ret1,thresh1 = cv2.threshold(blur,127,255,cv2.THRESH_BINARY)
+cv2.imshow('binary image 1',thresh1)
+cv2.waitKey()
+
+ret2,thresh2 = cv2.threshold(gblur,127,255,cv2.THRESH_BINARY)
+cv2.imshow('binary image 2',thresh2)
+cv2.waitKey()
+
+edges1 = cv2.Canny(imgr,100,200)
+cv2.imshow('Canny edge real',edges1)
+cv2.waitKey()
+cv2.destroyAllWindows()
